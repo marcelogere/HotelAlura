@@ -11,12 +11,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Color;
-import java.awt.SystemColor;
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.util.List;
-import java.awt.event.ActionEvent;
 import javax.swing.JTabbedPane;
 import java.awt.Toolkit;
 import javax.swing.SwingConstants;
@@ -25,6 +21,8 @@ import javax.swing.ListSelectionModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class Busqueda extends JFrame {
@@ -232,34 +230,41 @@ public class Busqueda extends JFrame {
 		lblBuscar.setForeground(Color.WHITE);
 		lblBuscar.setFont(new Font("Roboto", Font.PLAIN, 18));
 		
-		JPanel btnEditar = new JPanel();
+		JButton btnEditar = new JButton("EDITAR");
+		btnEditar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnEditar.setForeground(Color.BLACK);
+		btnEditar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnEditar.setLayout(null);
-		btnEditar.setBackground(new Color(12, 138, 199));
+		btnEditar.setBackground(getBackground());
 		btnEditar.setBounds(635, 508, 122, 35);
 		btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		contentPane.add(btnEditar);
 		
-		JLabel lblEditar = new JLabel("EDITAR");
+		/**JLabel lblEditar = new JLabel("EDITAR");
 		lblEditar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEditar.setForeground(Color.WHITE);
 		lblEditar.setFont(new Font("Roboto", Font.PLAIN, 18));
 		lblEditar.setBounds(0, 0, 122, 35);
-		btnEditar.add(lblEditar);
+		btnEditar.add(lblEditar);**/
 		
-		JPanel btnEliminar = new JPanel();
+		JButton btnEliminar = new JButton("ELIMINAR");
+		btnEliminar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnEliminar.setLayout(null);
 		btnEliminar.setBackground(new Color(12, 138, 199));
 		btnEliminar.setBounds(767, 508, 122, 35);
 		btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		contentPane.add(btnEliminar);
 		
-		JLabel lblEliminar = new JLabel("ELIMINAR");
+		/**JLabel lblEliminar = new JLabel("ELIMINAR");
 		lblEliminar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEliminar.setForeground(Color.WHITE);
 		lblEliminar.setFont(new Font("Roboto", Font.PLAIN, 18));
 		lblEliminar.setBounds(0, 0, 122, 35);
 		btnEliminar.add(lblEliminar);
-		setResizable(false);
+		setResizable(false);**/
 	}
 	
 //Código que permite mover la ventana por la pantalla según la posición de "x" y "y"

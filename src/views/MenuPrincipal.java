@@ -139,7 +139,7 @@ public class MenuPrincipal extends JFrame {
 		btnLogin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Login login = new Login();
+				LoginViews login = new LoginViews();
 				login.setVisible(true);
 				dispose();
 			}
