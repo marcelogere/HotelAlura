@@ -21,10 +21,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.Toolkit;
 import java.beans.PropertyChangeListener;
+import java.util.concurrent.TimeUnit;
 import java.beans.PropertyChangeEvent;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+import java.util.Date;
 
 
 @SuppressWarnings("serial")
@@ -38,6 +40,7 @@ public class ReservasView extends JFrame {
 	int xMouse, yMouse;
 	private JLabel labelExit;
 	private JLabel labelAtras;
+	private static final double valorDiario = 20.0; // Cambia esto a la tasa diaria en tu moneda local
 
 	/**
 	 * Launch the application.
@@ -272,12 +275,28 @@ public class ReservasView extends JFrame {
 		txtFechaSalida.getCalendarButton().setBackground(SystemColor.textHighlight);
 		txtFechaSalida.setBorder(new LineBorder(new Color(255, 255, 255), 0));
 		panel.add(txtFechaSalida);
+		
+		// Agregar un PropertyChangeListener a txtFechaEntrada
+        txtFechaEntrada.addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                calcularValorReserva();
+            }
+        });
+
+        // Agregar un PropertyChangeListener a txtFechaSalida
+        txtFechaSalida.addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                calcularValorReserva();
+            }
+        });
 
 		txtValor = new JTextField();
 		txtValor.setBackground(SystemColor.text);
 		txtValor.setHorizontalAlignment(SwingConstants.CENTER);
 		txtValor.setForeground(Color.BLACK);
-		txtValor.setBounds(78, 328, 43, 33);
+		txtValor.setBounds(78, 328, 177, 33);
 		txtValor.setEditable(false);
 		txtValor.setFont(new Font("Roboto Black", Font.BOLD, 17));
 		txtValor.setBorder(javax.swing.BorderFactory.createEmptyBorder());
@@ -314,6 +333,22 @@ public class ReservasView extends JFrame {
 
 
 	}
+	
+	// Método para calcular y mostrar el valor de la reserva
+    private void calcularValorReserva() {
+        Date fechaEntrada = txtFechaEntrada.getDate();
+        Date fechaSalida = txtFechaSalida.getDate();
+
+        if (fechaEntrada != null && fechaSalida != null) {
+            long difDays = Math.abs(fechaSalida.getTime() - fechaEntrada.getTime());
+            long diff = TimeUnit.DAYS.convert(difDays, TimeUnit.MILLISECONDS);
+
+            double valorReserva = diff * valorDiario;
+            txtValor.setText(String.format("%.2f", valorReserva)); // Formatear y mostrar el valor
+        } else {
+            txtValor.setText(""); // Limpiar el valor si no hay fechas seleccionadas
+        }
+    }
 		
 	//Código que permite mover la ventana por la pantalla según la posición de "x" y "y"	
 	 private void headerMousePressed(java.awt.event.MouseEvent evt) {
