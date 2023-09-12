@@ -15,7 +15,7 @@ public class ConnectionFactory {
 		ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource();
 		comboPooledDataSource.setJdbcUrl("jdbc:mysql://localhost/hotel_alura?useTimezone=true&serverTimezone=UTC");
 		comboPooledDataSource.setUser("root");
-		comboPooledDataSource.setPassword("aluraLatam1234");
+		comboPooledDataSource.setPassword("Cacho_2901");
 		
 
 		this.dataSource = comboPooledDataSource;
