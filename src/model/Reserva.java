@@ -5,13 +5,13 @@ import java.sql.Date;
 public class Reserva {
 	
 	private Integer id;
-	private Date fechaE;
-	private Date fechaS;
+	private java.util.Date fechaE;
+	private java.util.Date fechaS;
 	private String valor;
-	private String formaPago;
+	private Object formaPago;
 	
 	
-	public Reserva(Date fechaE, Date fechaS, String valor, String formaPago) {		
+	public Reserva(java.util.Date fechaE, java.util.Date fechaS, String valor, Object formaPago) {		
 		this.fechaE = fechaE;
 		this.fechaS = fechaS;
 		this.valor = valor;
@@ -34,11 +34,11 @@ public class Reserva {
 		this.id = id;
 	}
 
-	public Date getfechaE() {
+	public java.util.Date getfechaE() {
 		return fechaE;
 	}
 
-	public Date getfechaS() {
+	public java.util.Date getfechaS() {
 		return fechaS;
 	}
 
@@ -46,7 +46,7 @@ public class Reserva {
 		return valor;
 	}
 
-	public String getformaPago() {
+	public Object getformaPago() {
 		return formaPago;
 	}
 

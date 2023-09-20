@@ -12,18 +12,18 @@ public class Huespedes {
 	private Integer IdReserva;
 	
 	public Huespedes(String nombre, String apellido,  Date fechaNacimiento, String nacionalidad, String telefono,
-			Integer idReserva) {
+			String idReserva) {
 		super();
 		Nombre = nombre;
 		Apellido = apellido;
 		FechaNacimiento = fechaNacimiento;
 		Nacionalidad = nacionalidad;
 		Telefono = telefono;
-		IdReserva = idReserva;
+		IdReserva = Integer.parseInt(idReserva);
 	}
 	
 	public Huespedes(Integer id, String nombre, String apellido, Date fechaNacimiento, String nacionalidad,
-			String telefono, Integer idReserva) {
+			String telefono, String idReserva) {
 		super();
 		Id = id;
 		Nombre = nombre;
@@ -31,7 +31,7 @@ public class Huespedes {
 		FechaNacimiento = fechaNacimiento;
 		Nacionalidad = nacionalidad;
 		Telefono = telefono;
-		IdReserva = idReserva;
+		IdReserva = Integer.parseInt(idReserva);
 	}
 
 

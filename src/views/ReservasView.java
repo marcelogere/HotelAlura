@@ -12,7 +12,11 @@ import javax.swing.JButton;
 
 import java.awt.Color;
 import javax.swing.JTextField;
+
 import com.toedter.calendar.JDateChooser;
+
+import model.Reserva;
+
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -318,8 +322,15 @@ public class ReservasView extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (ReservasView.txtFechaEntrada.getDate() != null && ReservasView.txtFechaSalida.getDate() != null) {		
-					RegistroHuesped registro = new RegistroHuesped();
-					registro.setVisible(true);
+					/**RegistroHuesped registro = new RegistroHuesped();
+					registro.setVisible(true);**/
+					Reserva reserva  = new Reserva(
+							txtFechaEntrada.getDate(),
+							txtFechaSalida.getDate(),
+							txtValor.getText(),
+							txtFormaPago.getSelectedItem());
+					RegistroHuesped<?> registro = new RegistroHuesped<Object>(reserva); // Pasar reserva al constructor
+		            registro.setVisible(true);
 				} else {
 					JOptionPane.showMessageDialog(null, "Debes llenar todos los campos.");
 				}

@@ -25,10 +25,10 @@ private Connection connection;
 
 			try (PreparedStatement pstm = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-				pstm.setDate(1, reserva.getfechaE());
-				pstm.setDate(2, reserva.getfechaS());
+				pstm.setDate(1, (Date) reserva.getfechaE());
+				pstm.setDate(2, (Date) reserva.getfechaS());
 				pstm.setString(3, reserva.getvalor());
-				pstm.setString(4, reserva.getformaPago());
+				pstm.setString(4, (String) reserva.getformaPago());
 
 				pstm.executeUpdate();
 
